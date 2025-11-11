@@ -1,7 +1,9 @@
 using BasketballAnalytics.Application.Common.Interfaces;
+using BasketballAnalytics.Application.Features.Teams.Queries;
 using BasketballAnalytics.Persistence.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("BasketballDb"));
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllTeamsQuery).Assembly));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,7 +28,7 @@ if (app.Environment.IsDevelopment())
       using (var scope = app.Services.CreateScope())
     {
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        context.Database.EnsureCreated(); // Δημιουργεί τη βάση (αν δεν υπάρχει)
+        context.Database.EnsureCreated(); //it will create base if it hasn't have base 
         if (!context.Teams.Any())
         {
             context.Teams.Add(new BasketballAnalytics.Domain.Entities.Team { Id = Guid.NewGuid(), Name = "Olympiacos", City = "Piraeus" });

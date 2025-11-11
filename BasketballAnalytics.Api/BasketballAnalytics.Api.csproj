@@ -5,11 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.10"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.10" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../BasketballAnalytics.Aplication/BasketballAnalytics.Aplication.csproj"/>
-    <ProjectReference Include="../BasketballAnalytics.Persistence/BasketballAnalytics.Persistence.csproj"/>
+    <ProjectReference Include="../BasketballAnalytics.Application/BasketballAnalytics.Application.csproj" />
+    <ProjectReference Include="../BasketballAnalytics.Persistence/BasketballAnalytics.Persistence.csproj" />
   </ItemGroup>
 </Project>

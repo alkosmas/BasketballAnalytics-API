@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../BasketballAnalytics.Aplication/BasketballAnalytics.Aplication.csproj"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8"/>
+    <ProjectReference Include="../BasketballAnalytics.Application/BasketballAnalytics.Application.csproj" />
   </ItemGroup>
 </Project>
