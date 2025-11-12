@@ -6,6 +6,9 @@ using BasketballAnalytics.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using BasketballAnalytics.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+using BasketballAnalytics.Application.Features.Teams.Queries;
+using BasketballAnalytics.Application.Features.Teams.Commands;
 
 namespace BasketballAnalytics.Api.Controllers
 {
@@ -13,17 +16,38 @@ namespace BasketballAnalytics.Api.Controllers
     [Route("api/[controller]")]
     public class TeamsController : ControllerBase
     {
-        private readonly IApplicationDbContext _context;
+        private readonly ISender _mediator;
 
-        public TeamsController(IApplicationDbContext context)
+        public TeamsController(ISender mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
         {
-            return await _context.Teams.ToListAsync();
+            var teams =  await _mediator.Send(new GetAllTeamsQuery());
+            return Ok(teams);
         }
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<Team>> GetTeamById(Guid id)
+        {
+            var query = new GetTeamByIdQuery(id);
+            var team = await _mediator.Send(query);
+            return team is not null ? Ok(team) : NotFound();
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult> CreateTeam([FromBody] CreateTeamCommand command)
+        {
+            var teamId = await _mediator.Send(command);
+
+            return CreatedAtAction(nameof(GetTeamById), new { id = teamId} , teamId);
+        }
+        
+
     }
+
+
 }

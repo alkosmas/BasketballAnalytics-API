@@ -1,6 +1,7 @@
 using BasketballAnalytics.Application.Common.Interfaces;
 using BasketballAnalytics.Application.Features.Teams.Queries;
 using BasketballAnalytics.Persistence.DbContext;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
 
@@ -17,6 +18,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddValidatorsFromAssembly(typeof(GetAllTeamsQuery).Assembly);
+
 
 var app = builder.Build();
 
