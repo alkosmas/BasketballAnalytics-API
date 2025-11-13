@@ -45,8 +45,24 @@ namespace BasketballAnalytics.Api.Controllers
 
             return CreatedAtAction(nameof(GetTeamById), new { id = teamId} , teamId);
         }
-        
 
+          
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult> UpdateTeam(Guid id,[FromBody] UpdateTeamCommand request)
+        {
+            var command = new UpdateTeamCommand(id , request.Name, request.City);
+
+            await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<NoContentResult> DeleteTeam(Guid id)
+        {
+            var command = new DeleteTeamCommand(id);
+            await _mediator.Send(command);
+            return NoContent();
+        }
     }
 
 
