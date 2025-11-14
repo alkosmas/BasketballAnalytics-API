@@ -5,9 +5,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+    <!-- ΒΑΛΕ ΑΥΤΕΣ -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../BasketballAnalytics.Application/BasketballAnalytics.Application.csproj" />
+    <ProjectReference Include="..\BasketballAnalytics.Application\BasketballAnalytics.Application.csproj" />
   </ItemGroup>
 </Project>
