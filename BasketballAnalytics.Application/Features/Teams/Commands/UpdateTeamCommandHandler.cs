@@ -5,15 +5,21 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using BasketballAnalytics.Application.Common.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BasketballAnalytics.Application.Features.Teams.Commands;
 
 public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
 {
     private readonly IApplicationDbContext _context;
+
+    private readonly IMemoryCache _cache;
+
+    private static readonly string CacheKey = "AllTeamsList";
     
-    public UpdateTeamCommandHandler(IApplicationDbContext context){
+    public UpdateTeamCommandHandler(IApplicationDbContext context,IMemoryCache cache){
         _context = context;
+        _cache = cache;
     }
 
     public async Task Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
@@ -27,5 +33,6 @@ public class UpdateTeamCommandHandler : IRequestHandler<UpdateTeamCommand>
         team.City = request.City;
 
         await _context.SaveChangesAsync(cancellationToken);
+        _cache.Remove(CacheKey);
     }
 }

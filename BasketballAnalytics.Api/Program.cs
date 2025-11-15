@@ -1,5 +1,6 @@
 using BasketballAnalytics.Api.Middleware;
 using BasketballAnalytics.Application.Common.Behavior;
+using BasketballAnalytics.Application.Common.Behaviors;
 using BasketballAnalytics.Application.Common.Interfaces;
 using BasketballAnalytics.Application.Features.Teams.Queries;
 using BasketballAnalytics.Persistence.DbContext;
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddMediatR(cfg =>
 {
      cfg.RegisterServicesFromAssembly(typeof(GetAllTeamsQuery).Assembly);
+     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 });
 

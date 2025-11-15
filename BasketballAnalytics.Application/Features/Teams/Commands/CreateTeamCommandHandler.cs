@@ -8,6 +8,7 @@ using BasketballAnalytics.Application.Common.Interfaces;
 using BasketballAnalytics.Application.Features.Teams.Dtos;
 using BasketballAnalytics.Domain.Entities;
 using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BasketballAnalytics.Application.Features.Teams.Commands
 
@@ -16,9 +17,14 @@ namespace BasketballAnalytics.Application.Features.Teams.Commands
     {
         private readonly IApplicationDbContext _context;
 
-        public CreateTeamCommandHandler(IApplicationDbContext context)
+        private readonly IMemoryCache _cache;
+
+        private static readonly string CacheKey = "AllTeamsList";
+
+        public CreateTeamCommandHandler(IApplicationDbContext context, IMemoryCache cache )
         {
             _context = context;
+            _cache = cache;
         }
         public async Task<Guid> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
         {
@@ -31,6 +37,10 @@ namespace BasketballAnalytics.Application.Features.Teams.Commands
             _context.Teams.Add(team);
 
             await _context.SaveChangesAsync(cancellationToken);
+
+            _cache.Remove(CacheKey);
+
+
             return team.Id;
 
         }
