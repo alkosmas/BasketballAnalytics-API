@@ -5,8 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -14,7 +13,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasketballAnalytics.Application\BasketballAnalytics.Application.csproj" />
-    <ProjectReference Include="..\BasketballAnalytics.Persistence\BasketballAnalytics.Persistence.csproj" />
+    <ProjectReference Include="..\..\Core\BasketballAnalytics.Application\BasketballAnalytics.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\BasketballAnalytics.Persistence\BasketballAnalytics.Persistence.csproj" />
   </ItemGroup>
 </Project>

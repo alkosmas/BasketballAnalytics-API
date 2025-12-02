@@ -12,6 +12,7 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasketballAnalytics.Application\BasketballAnalytics.Application.csproj" />
+    <ProjectReference Include="..\..\Core\BasketballAnalytics.Application\BasketballAnalytics.Application.csproj" />
+    <ProjectReference Include="..\..\Core\BasketballAnalytics.Domain\BasketballAnalytics.Domain.csproj" />
   </ItemGroup>
 </Project>

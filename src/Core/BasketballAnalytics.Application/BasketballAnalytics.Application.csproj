@@ -5,10 +5,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <!-- ΒΑΛΕ ΑΥΤΕΣ -->
+  
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="FluentAssertions" Version="8.8.0" />
+  
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+  
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
   </ItemGroup>
