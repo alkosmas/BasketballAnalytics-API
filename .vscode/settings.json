@@ -1,0 +1,17 @@
+{
+    "cSpell.words": [
+        "Npgsql"
+    ],
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "My Database ",
+            "database": "BasketballAnalyticsDb",
+            "username": "postgres"
+        }
+    ]
+}
