@@ -13,29 +13,24 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-
-
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddMediatR(cfg =>
 {
-     cfg.RegisterServicesFromAssembly(typeof(GetAllTeamsQuery).Assembly);
-     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-
+    cfg.RegisterServicesFromAssembly(typeof(GetAllTeamsQuery).Assembly);
+    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 });
 
-
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -72,7 +67,6 @@ var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(JwtSettings.SectionName, jwtSettings);
 
 builder.Services.AddSingleton(Options.Create(jwtSettings));
-
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -87,10 +81,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
     });
 
+// Health Checks
+builder.Services.AddHealthChecks()
+    .AddNpgSql(
+        builder.Configuration.GetConnectionString("DefaultConnection")!,
+        name: "database",
+        tags: new[] { "db", "postgresql" });
 
 var app = builder.Build();
 app.UseMiddleware<GlobalErrorHandlingMiddleware>();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -105,7 +104,29 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+// Health Check Endpoint
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    ResponseWriter = async (context, report) =>
+    {
+        context.Response.ContentType = "application/json";
+        
+        var response = new
+        {
+            status = report.Status.ToString(),
+            checks = report.Entries.Select(e => new
+            {
+                name = e.Key,
+                status = e.Value.Status.ToString(),
+                duration = e.Value.Duration.TotalMilliseconds + "ms"
+            }),
+            totalDuration = report.TotalDuration.TotalMilliseconds + "ms"
+        };
+        
+        await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+    }
+});
 
+app.Run();
 
 public partial class Program { }
