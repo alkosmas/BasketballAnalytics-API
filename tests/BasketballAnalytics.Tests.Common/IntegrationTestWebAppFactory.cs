@@ -25,19 +25,15 @@ public class IntegrationTestWebAppFactory : WebApplicationFactory<Program>, IAsy
     {
         builder.ConfigureTestServices(services =>
         {
-            // Αφαίρεση του υπάρχοντος DbContext
             services.RemoveAll(typeof(DbContextOptions<ApplicationDbContext>));
 
-            // Προσθήκη DbContext με test database
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(_dbContainer.GetConnectionString()));
 
-            // Αφαίρεση του υπάρχοντος authentication
             services.RemoveAll(typeof(IAuthenticationService));
             services.RemoveAll(typeof(IAuthenticationHandlerProvider));
             services.RemoveAll(typeof(IAuthenticationSchemeProvider));
 
-            // Προσθήκη test authentication που κάνει bypass το JWT
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = TestAuthHandler.AuthenticationScheme;
@@ -48,7 +44,6 @@ public class IntegrationTestWebAppFactory : WebApplicationFactory<Program>, IAsy
                 TestAuthHandler.AuthenticationScheme, 
                 options => { });
 
-            // Δημιουργία της βάσης
             var sp = services.BuildServiceProvider();
             using var scope = sp.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();

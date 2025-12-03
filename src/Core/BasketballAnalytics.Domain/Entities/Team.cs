@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace BasketballAnalytics.Domain.Entities;
 
-namespace BasketballAnalytics.Domain.Entities
+public class Team
 {
-    public class Team
-    {
-            public Guid Id { get; set;}
-            public string Name { get; set;} = string.Empty;
-
-            public string City { get; set;} = string.Empty;
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string City { get; set; } = string.Empty;
+    
+    public ICollection<Player> Players { get; set; } = new List<Player>();
 }
