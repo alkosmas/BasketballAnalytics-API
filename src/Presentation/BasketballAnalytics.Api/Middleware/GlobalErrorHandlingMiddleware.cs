@@ -1,7 +1,7 @@
 
 using System.Net;
 using System.Text.Json;
-using FluentValidation; // Πρόσθεσε αυτό το using
+using FluentValidation; 
 
 namespace BasketballAnalytics.Api.Middleware;
 
@@ -42,12 +42,20 @@ public class GlobalErrorHandlingMiddleware
                 errors = validationException.Errors.Select(e => new { e.PropertyName, e.ErrorMessage });
                 break;
 
+      /*      case NotFoundException otFoundEx:
+                statusCode = HttpStatusCode.NotFound;  
+                message = notFoundEx.Message;
+                break;
+
+            case UnauthorizedException unauthorizedEx:
+                statusCode = HttpStatusCode.Unauthorized;  
+                message = "Unauthorized access";
+                break;
+    */
 
             default:
                 statusCode = HttpStatusCode.InternalServerError;
                 message = "An internal server error has occurred.";
-                // Σε production, δεν θέλουμε να στέλνουμε λεπτομέρειες για το σφάλμα
-                // message = exception.Message;
                 break;
 
         }
