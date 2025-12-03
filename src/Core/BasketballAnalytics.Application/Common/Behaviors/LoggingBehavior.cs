@@ -34,8 +34,5 @@ namespace BasketballAnalytics.Application.Common.Behaviors
                 _logger.LogInformation("Handled request {RequestName} in {ElapseMilliseconds}ms", requestName, elapseMilliseconds);
                 return response;
         }
-
-
-
     }
 }

@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using BasketballAnalytics.Application.Common.Models;
 using BasketballAnalytics.Application.Features.Players.Commands;
 using BasketballAnalytics.Application.Features.Players.Queries;
 using BasketballAnalytics.Application.Features.Players.Dtos;
@@ -17,6 +18,13 @@ public class PlayersController : ControllerBase
     public PlayersController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<PlayerDto>>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    {
+        var result = await _mediator.Send(new GetAllPlayersQuery(page, pageSize));
+        return Ok(result);
     }
 
     [HttpGet("team/{teamId:guid}")]
