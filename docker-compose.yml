@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/Presentation/BasketballAnalytics.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Database=basketball;Username=postgres;Password=postgres123
+      - JwtSettings__Secret=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=BasketballAnalytics
+      - JwtSettings__Audience=BasketballAnalytics
+      - JwtSettings__ExpiryMinutes=60
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=basketball
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
