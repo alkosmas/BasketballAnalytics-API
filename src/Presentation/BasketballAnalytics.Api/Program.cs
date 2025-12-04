@@ -1,4 +1,5 @@
 using BasketballAnalytics.Api.Middleware;
+using BasketballAnalytics.Api.Consumers;
 using BasketballAnalytics.Application.Common.Behavior;
 using BasketballAnalytics.Application.Common.Behaviors;
 using BasketballAnalytics.Application.Common.Interfaces;
@@ -8,6 +9,7 @@ using BasketballAnalytics.Persistence.DbContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using FluentValidation;
 using MediatR;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -15,6 +17,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using System.Text.Json;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +32,39 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(GetAllTeamsQuery).Assembly);
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+});
+
+// MassTransit
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<PlayerCreatedConsumer>();
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        var rabbitHost = builder.Configuration["RabbitMQ:Host"] ?? "localhost";
+        var rabbitUser = builder.Configuration["RabbitMQ:Username"] ?? "guest";
+        var rabbitPass = builder.Configuration["RabbitMQ:Password"] ?? "guest";
+
+        cfg.Host(rabbitHost, "/", h => { h.Username(rabbitUser); h.Password(rabbitPass); });
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
+// RATE LIMITING
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    // Global Policy: 10 requests per 10 seconds per IP address
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                AutoReplenishment = true,
+                PermitLimit = 10,
+                QueueLimit = 0,
+                Window = TimeSpan.FromSeconds(10)
+            }));
 });
 
 builder.Services.AddControllers();
@@ -81,7 +118,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
     });
 
-// Health Checks
 builder.Services.AddHealthChecks()
     .AddNpgSql(
         builder.Configuration.GetConnectionString("DefaultConnection")!,
@@ -89,9 +125,13 @@ builder.Services.AddHealthChecks()
         tags: new[] { "db", "postgresql" });
 
 var app = builder.Build();
+
+// MIDDLEWARE ORDER MATTERS!
 app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 
-// Configure the HTTP request pipeline.
+// Rate Limiter must be early
+app.UseRateLimiter();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -99,18 +139,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// Health Check Endpoint
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     ResponseWriter = async (context, report) =>
     {
         context.Response.ContentType = "application/json";
-        
         var response = new
         {
             status = report.Status.ToString(),
@@ -122,7 +160,6 @@ app.MapHealthChecks("/health", new HealthCheckOptions
             }),
             totalDuration = report.TotalDuration.TotalMilliseconds + "ms"
         };
-        
         await context.Response.WriteAsync(JsonSerializer.Serialize(response));
     }
 });

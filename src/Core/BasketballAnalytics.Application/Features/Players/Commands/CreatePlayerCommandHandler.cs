@@ -1,5 +1,7 @@
 using MediatR;
+using MassTransit;
 using BasketballAnalytics.Application.Common.Interfaces;
+using BasketballAnalytics.Application.Common.Events;
 using BasketballAnalytics.Domain.Entities;
 
 namespace BasketballAnalytics.Application.Features.Players.Commands;
@@ -7,10 +9,14 @@ namespace BasketballAnalytics.Application.Features.Players.Commands;
 public class CreatePlayerCommandHandler : IRequestHandler<CreatePlayerCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
+    private readonly IPublishEndpoint _publishEndpoint;
 
-    public CreatePlayerCommandHandler(IApplicationDbContext context)
+    public CreatePlayerCommandHandler(
+        IApplicationDbContext context,
+        IPublishEndpoint publishEndpoint)
     {
         _context = context;
+        _publishEndpoint = publishEndpoint;
     }
 
     public async Task<Guid> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
@@ -29,6 +35,16 @@ public class CreatePlayerCommandHandler : IRequestHandler<CreatePlayerCommand, G
 
         _context.Players.Add(player);
         await _context.SaveChangesAsync(cancellationToken);
+
+        // Publish event to RabbitMQ (async processing)
+        await _publishEndpoint.Publish(new PlayerCreatedEvent
+        {
+            PlayerId = player.Id,
+            FirstName = player.FirstName,
+            LastName = player.LastName,
+            TeamId = player.TeamId,
+            CreatedAt = DateTime.UtcNow
+        }, cancellationToken);
 
         return player.Id;
     }
