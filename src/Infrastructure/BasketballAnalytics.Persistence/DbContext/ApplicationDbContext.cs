@@ -1,6 +1,7 @@
 using BasketballAnalytics.Application.Common.Interfaces;
 using BasketballAnalytics.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BasketballAnalytics.Persistence.DbContext;
 
@@ -16,14 +17,19 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext, IAp
     {
         base.OnModelCreating(modelBuilder);
         
+        // Add all configurations from assembly
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        // Relationship configuration
         modelBuilder.Entity<Player>()
             .HasOne(p => p.Team)
             .WithMany(t => t.Players)
             .HasForeignKey(p => p.TeamId)
-            .OnDelete(DeleteBehavior.Restrict);
-        
-        modelBuilder.Entity<Player>()
-            .HasIndex(p => p.TeamId);
+            .OnDelete(DeleteBehavior.Restrict); // <-- MAKE SURE THIS IS RESTRICT
+
+        // Global Query Filter for Soft Delete
+        modelBuilder.Entity<Player>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Team>().HasQueryFilter(e => !e.IsDeleted);
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -32,14 +38,20 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext, IAp
 
         foreach (var entry in entries)
         {
-            if (entry.State == EntityState.Added)
+            switch (entry.State)
             {
-                entry.Entity.CreatedAt = DateTime.UtcNow;
-                entry.Entity.UpdatedAt = DateTime.UtcNow;
-            }
-            else if (entry.State == EntityState.Modified)
-            {
-                entry.Entity.UpdatedAt = DateTime.UtcNow;
+                case EntityState.Added:
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+                case EntityState.Modified:
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+                case EntityState.Deleted:
+                    entry.State = EntityState.Modified;
+                    entry.Entity.IsDeleted = true;
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
             }
         }
 
