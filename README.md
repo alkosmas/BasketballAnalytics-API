@@ -27,7 +27,7 @@ The fastest way to run the application:
 
 ```bash
 # Clone the repository
-git clone https://github.com/alkosmas92/BasketballAnalytics.Api.git
+https://github.com/alkosmas/BasketballAnalytics-API.git
 cd BasketballAnalytics.Api
 
 # Run with Docker Compose (API + PostgreSQL)
