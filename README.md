@@ -294,17 +294,4 @@ BasketballAnalytics.Api/
 ## 📄 License
 
 This project is for educational and portfolio purposes.
-EOF
-```
 
----
-
-## Build και commit:
-
-```bash
-dotnet build
-git add .
-git commit -m "Update README with Docker instructions and complete documentation"
-```
-
----
