@@ -25,8 +25,7 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext, IAp
             .HasOne(p => p.Team)
             .WithMany(t => t.Players)
             .HasForeignKey(p => p.TeamId)
-            .OnDelete(DeleteBehavior.Restrict); // <-- MAKE SURE THIS IS RESTRICT
-
+            .OnDelete(DeleteBehavior.Restrict);
         // Global Query Filter for Soft Delete
         modelBuilder.Entity<Player>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<Team>().HasQueryFilter(e => !e.IsDeleted);

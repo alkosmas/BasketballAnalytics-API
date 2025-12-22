@@ -1,5 +1,7 @@
 # This file is a combination of the official .gitignore templates for Visual Studio and .NET
 
+.week1.md
+
 ## C#
 [Bb]in/
 [Oo]bj/

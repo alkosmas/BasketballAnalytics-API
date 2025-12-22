@@ -42,7 +42,7 @@ public class GlobalErrorHandlingMiddleware
                 errors = validationException.Errors.Select(e => new { e.PropertyName, e.ErrorMessage });
                 break;
 
-      /*      case NotFoundException otFoundEx:
+      /*      case NotFoundException notFoundEx:
                 statusCode = HttpStatusCode.NotFound;  
                 message = notFoundEx.Message;
                 break;
