@@ -2,6 +2,8 @@
 using System.Net;
 using System.Text.Json;
 using FluentValidation; 
+using BasketballAnalytics.Application.Exceptions;
+
 
 namespace BasketballAnalytics.Api.Middleware;
 
@@ -42,17 +44,11 @@ public class GlobalErrorHandlingMiddleware
                 errors = validationException.Errors.Select(e => new { e.PropertyName, e.ErrorMessage });
                 break;
 
-      /*      case NotFoundException notFoundEx:
-                statusCode = HttpStatusCode.NotFound;  
-                message = notFoundEx.Message;
+            case UserAlreadyExistsException userExistsException:
+                statusCode = HttpStatusCode.Conflict; 
+                message = userExistsException.Message;
                 break;
-
-            case UnauthorizedException unauthorizedEx:
-                statusCode = HttpStatusCode.Unauthorized;  
-                message = "Unauthorized access";
-                break;
-    */
-
+                
             default:
                 statusCode = HttpStatusCode.InternalServerError;
                 message = "An internal server error has occurred.";

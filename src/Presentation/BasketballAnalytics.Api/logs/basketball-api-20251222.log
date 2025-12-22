@@ -1,0 +1,896 @@
+2025-12-22 10:12:02.672 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:12:03.091 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:12:03.331 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":18}
+2025-12-22 10:12:42.504 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI1676HGUNB:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI1676HGUNB","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 10:12:42.586 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"0fb4b3ce-1cfa-4f96-b144-7a8c2dd0fefb","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI1676HGUNB:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI1676HGUNB","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 10:12:43.900 +02:00 [INF] Handled request RegisterUserCommand in 1312ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"0fb4b3ce-1cfa-4f96-b144-7a8c2dd0fefb","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI1676HGUNB:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI1676HGUNB","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 10:13:07.023 +02:00 [INF] Handling request LoginQuery ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ba967860-587e-4160-9e01-b09eb7d48981","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI1676HGUNB:00000004","RequestPath":"/api/Auth/login","ConnectionId":"0HNI1676HGUNB","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 10:13:07.394 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI1676HGUNB:00000004","RequestPath":"/api/Auth/login","ConnectionId":"0HNI1676HGUNB","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":23}
+BasketballAnalytics.Application.Common.Exceptions.BadRequestException: Invalid username or password.
+   at BasketballAnalytics.Application.Features.Teams.Queries.LoginQueryHandler.Handle(LoginQuery request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Queries/Login/LoginQueryHandler.cs:line 35
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Login(LoginQuery query) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 10:17:03.366 +02:00 [INF] Usage Telemetry: {"id":"8aa60000-1032-5e16-7a11-08de4131c9f0","created":"2025-12-22T10:12:03.0373336\u002B02:00","host":{"framework_version":"8.0.22","mass_transit_version":"8.5.7.0","operating_system_version":"Unix 6.17.0.8","time_zone_info":"(UTC\u002B02:00) Eastern European Time (Athens)","commit_hash":"855cf1752c94ca9498e0c45ce8d09fdc9e957dd6"},"bus":[{"created":"2025-12-22T10:12:03.0385861\u002B02:00","configured":"2025-12-22T10:12:03.1681970\u002B02:00","started":"2025-12-22T10:12:03.3300381\u002B02:00","name":"IBus","endpoints":[{"name":"PlayerCreated","type":"RabbitMQ","prefetch_count":24,"consumer_count":1,"message_count":1},{"name":"_bus_","type":"RabbitMQ","prefetch_count":24}]}]} {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":35}
+2025-12-22 10:24:29.801 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":57}
+2025-12-22 10:26:12.685 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:26:13.104 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:26:13.342 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":18}
+2025-12-22 10:26:15.326 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI16F2UET4S:00000001","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16F2UET4S","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 10:26:15.444 +02:00 [INF] Handling request LoginQuery ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ae8f5a28-7e5c-49ef-90a2-3ff7a35de64a","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI16F2UET4S:00000001","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16F2UET4S","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 10:26:16.963 +02:00 [INF] Handled request LoginQuery in 1518ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ae8f5a28-7e5c-49ef-90a2-3ff7a35de64a","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI16F2UET4S:00000001","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16F2UET4S","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 10:43:38.897 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:43:39.379 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 10:43:39.637 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":10}
+2025-12-22 10:44:15.153 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI16P07P3QV:00000003","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16P07P3QV","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 10:44:15.235 +02:00 [INF] Handling request LoginQuery ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"b9e67dc6-fe1d-4472-ae53-a003c75cb52f","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI16P07P3QV:00000003","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16P07P3QV","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 10:44:16.763 +02:00 [INF] Handled request LoginQuery in 1527ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"b9e67dc6-fe1d-4472-ae53-a003c75cb52f","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI16P07P3QV:00000003","RequestPath":"/api/Auth/login","ConnectionId":"0HNI16P07P3QV","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 10:44:36.506 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"df00aafb-1591-44e7-bb98-f752458a0981","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI16P07P3QV:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI16P07P3QV","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":8}
+2025-12-22 10:44:36.904 +02:00 [INF] Handled request RegisterUserCommand in 397ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"df00aafb-1591-44e7-bb98-f752458a0981","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI16P07P3QV:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI16P07P3QV","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":10}
+2025-12-22 10:48:39.670 +02:00 [INF] Usage Telemetry: {"id":"59400000-1032-5e16-9bb3-08de41363436","created":"2025-12-22T10:43:39.3223792\u002B02:00","host":{"framework_version":"8.0.22","mass_transit_version":"8.5.7.0","operating_system_version":"Unix 6.17.0.8","time_zone_info":"(UTC\u002B02:00) Eastern European Time (Athens)","commit_hash":"855cf1752c94ca9498e0c45ce8d09fdc9e957dd6"},"bus":[{"created":"2025-12-22T10:43:39.3237688\u002B02:00","configured":"2025-12-22T10:43:39.4609368\u002B02:00","started":"2025-12-22T10:43:39.6359965\u002B02:00","name":"IBus","endpoints":[{"name":"PlayerCreated","type":"RabbitMQ","prefetch_count":24,"consumer_count":1,"message_count":1},{"name":"_bus_","type":"RabbitMQ","prefetch_count":24}]}]} {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":29}
+2025-12-22 11:23:50.140 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:23:50.630 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:23:50.803 +02:00 [ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5156: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+ ---> System.Net.Sockets.SocketException (98): Address already in use
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-12-22 11:23:50.819 +02:00 [WRN] Failed to stop bus: "rabbitmq://localhost/alexHP255156in_BasketballAnalyticsApi_bus_mzzyyyyogjxbpk5ybdxrnq6tdm?temporary=true" (Not Started) {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:23:50.824 +02:00 [FTL] Application failed to start {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5156: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+ ---> System.Net.Sockets.SocketException (98): Address already in use
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Program.cs:line 216
+2025-12-22 11:25:36.283 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:25:36.763 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:25:37.019 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 11:26:10.724 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17GDVQJPA:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 11:26:10.809 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ac3dc459-75d9-4ade-a5de-d50441bde22b","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17GDVQJPA:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 11:26:10.829 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17GDVQJPA:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+FluentValidation.ValidationException: Validation failed: 
+ -- Role: Role must be either 'Admin' or 'User'. Severity: Error
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 34
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 11:26:24.596 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ac3dc459-75d9-4ade-a5de-d50441bde22b","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17GDVQJPA:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 11:26:25.584 +02:00 [ERR] An error occurred using the connection to database 'BasketballAnalyticsDb' on server 'tcp://localhost:5432'. {"EventId":{"Id":20004,"Name":"Microsoft.EntityFrameworkCore.Database.Connection.ConnectionError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Connection","ActionId":"ac3dc459-75d9-4ade-a5de-d50441bde22b","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17GDVQJPA:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:26:25.599 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'BasketballAnalytics.Persistence.DbContext.ApplicationDbContext'.
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed {"EventId":{"Id":10000,"Name":"Microsoft.EntityFrameworkCore.Update.SaveChangesFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Update","ActionId":"ac3dc459-75d9-4ade-a5de-d50441bde22b","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17GDVQJPA:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed
+2025-12-22 11:26:25.608 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17GDVQJPA:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17GDVQJPA","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 29
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed
+2025-12-22 11:28:30.538 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":3}
+2025-12-22 11:29:20.525 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:29:20.930 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:29:21.168 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":21}
+2025-12-22 11:29:34.521 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17IF6E3O8:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17IF6E3O8","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 11:29:34.638 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"fc464687-065d-44f8-9cc1-db7ce912c5b1","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17IF6E3O8:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17IF6E3O8","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 11:29:35.697 +02:00 [ERR] An error occurred using the connection to database 'BasketballAnalyticsDb' on server 'tcp://localhost:5432'. {"EventId":{"Id":20004,"Name":"Microsoft.EntityFrameworkCore.Database.Connection.ConnectionError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Connection","ActionId":"fc464687-065d-44f8-9cc1-db7ce912c5b1","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17IF6E3O8:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17IF6E3O8","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":17}
+2025-12-22 11:29:35.719 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'BasketballAnalytics.Persistence.DbContext.ApplicationDbContext'.
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed {"EventId":{"Id":10000,"Name":"Microsoft.EntityFrameworkCore.Update.SaveChangesFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Update","ActionId":"fc464687-065d-44f8-9cc1-db7ce912c5b1","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17IF6E3O8:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17IF6E3O8","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":17}
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed
+2025-12-22 11:29:35.731 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17IF6E3O8:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17IF6E3O8","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":17}
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "postgres"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 29
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "postgres"
+    File: auth.c
+    Line: 334
+    Routine: auth_failed
+2025-12-22 11:31:01.188 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":30}
+2025-12-22 11:34:27.926 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:34:28.343 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:34:28.582 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 11:34:34.296 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17L8HA0T7:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17L8HA0T7","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 11:34:34.412 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"426a0c4e-4f4f-45b6-a51e-bbcbde29c5f6","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17L8HA0T7:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17L8HA0T7","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 11:34:35.474 +02:00 [ERR] An error occurred using the connection to database 'BasketballAnalyticsDb' on server 'tcp://localhost:5432'. {"EventId":{"Id":20004,"Name":"Microsoft.EntityFrameworkCore.Database.Connection.ConnectionError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Connection","ActionId":"426a0c4e-4f4f-45b6-a51e-bbcbde29c5f6","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17L8HA0T7:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17L8HA0T7","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 11:34:35.494 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'BasketballAnalytics.Persistence.DbContext.ApplicationDbContext'.
+Npgsql.PostgresException (0x80004005): 3D000: database "BasketballAnalyticsDb" does not exist
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 3D000
+    MessageText: database "BasketballAnalyticsDb" does not exist
+    File: postinit.c
+    Line: 948
+    Routine: InitPostgres {"EventId":{"Id":10000,"Name":"Microsoft.EntityFrameworkCore.Update.SaveChangesFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Update","ActionId":"426a0c4e-4f4f-45b6-a51e-bbcbde29c5f6","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17L8HA0T7:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17L8HA0T7","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+Npgsql.PostgresException (0x80004005): 3D000: database "BasketballAnalyticsDb" does not exist
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+  Exception data:
+    Severity: FATAL
+    SqlState: 3D000
+    MessageText: database "BasketballAnalyticsDb" does not exist
+    File: postinit.c
+    Line: 948
+    Routine: InitPostgres
+2025-12-22 11:34:35.506 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17L8HA0T7:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17L8HA0T7","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+Npgsql.PostgresException (0x80004005): 3D000: database "BasketballAnalyticsDb" does not exist
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|34_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 29
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+  Exception data:
+    Severity: FATAL
+    SqlState: 3D000
+    MessageText: database "BasketballAnalyticsDb" does not exist
+    File: postinit.c
+    Line: 948
+    Routine: InitPostgres
+2025-12-22 11:35:40.402 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":25}
+2025-12-22 11:35:43.134 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:35:43.559 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:35:43.802 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":21}
+2025-12-22 11:35:46.752 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17LU49GBI:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17LU49GBI","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:35:46.865 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"ac97c8f0-1d15-4870-828a-03cf58f55eac","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17LU49GBI:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17LU49GBI","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:35:48.050 +02:00 [ERR] Failed executing DbCommand (48ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Id", "PasswordHash", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3); {"EventId":{"Id":20102,"Name":"Microsoft.EntityFrameworkCore.Database.Command.CommandError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Command","ActionId":"ac97c8f0-1d15-4870-828a-03cf58f55eac","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17LU49GBI:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17LU49GBI","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:35:48.077 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'BasketballAnalytics.Persistence.DbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) {"EventId":{"Id":10000,"Name":"Microsoft.EntityFrameworkCore.Update.SaveChangesFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Update","ActionId":"ac97c8f0-1d15-4870-828a-03cf58f55eac","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17LU49GBI:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17LU49GBI","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-12-22 11:35:48.086 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17LU49GBI:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17LU49GBI","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 29
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 11:36:52.861 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":14}
+2025-12-22 11:36:55.239 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:36:55.671 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:36:55.947 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:37:17.151 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17MK3S387:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":10}
+2025-12-22 11:37:17.237 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S387:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":10}
+2025-12-22 11:37:17.264 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17MK3S387:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":10}
+FluentValidation.ValidationException: Validation failed: 
+ -- Password: The length of 'Password' must be at least 6 characters. You entered 4 characters. Severity: Error
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 34
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 11:37:29.449 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S387:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:37:30.528 +02:00 [ERR] Failed executing DbCommand (48ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Id", "PasswordHash", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3); {"EventId":{"Id":20102,"Name":"Microsoft.EntityFrameworkCore.Database.Command.CommandError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Command","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S387:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+2025-12-22 11:37:30.547 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'BasketballAnalytics.Persistence.DbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) {"EventId":{"Id":10000,"Name":"Microsoft.EntityFrameworkCore.Update.SaveChangesFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Update","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S387:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-12-22 11:37:30.554 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17MK3S387:00000004","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S387","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42P01: relation "Users" does not exist
+
+POSITION: 13
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Users" does not exist
+    Position: 13
+    File: parse_relation.c
+    Line: 1392
+    Routine: parserOpenTable
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 29
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 11:40:11.276 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":27}
+2025-12-22 11:40:11.447 +02:00 [INF] Handled request RegisterUserCommand in 170ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":27}
+2025-12-22 11:40:18.319 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000002","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":27}
+2025-12-22 11:40:18.447 +02:00 [INF] Handled request RegisterUserCommand in 126ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000002","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":27}
+2025-12-22 11:40:21.162 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":27}
+2025-12-22 11:40:21.285 +02:00 [INF] Handled request RegisterUserCommand in 122ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"29dcb265-c387-46db-9159-8699ef3eed42","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17MK3S389:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17MK3S389","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":28}
+2025-12-22 11:41:55.979 +02:00 [INF] Usage Telemetry: {"id":"38330000-1032-5e16-c148-08de413da559","created":"2025-12-22T11:36:55.6123474\u002B02:00","host":{"framework_version":"8.0.22","mass_transit_version":"8.5.7.0","operating_system_version":"Unix 6.17.0.8","time_zone_info":"(UTC\u002B02:00) Eastern European Time (Athens)","commit_hash":"855cf1752c94ca9498e0c45ce8d09fdc9e957dd6"},"bus":[{"created":"2025-12-22T11:36:55.6137141\u002B02:00","configured":"2025-12-22T11:36:55.7514578\u002B02:00","started":"2025-12-22T11:36:55.9462291\u002B02:00","name":"IBus","endpoints":[{"name":"PlayerCreated","type":"RabbitMQ","prefetch_count":24,"consumer_count":1,"message_count":1},{"name":"_bus_","type":"RabbitMQ","prefetch_count":24}]}]} {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":29}
+2025-12-22 11:44:28.932 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":36}
+2025-12-22 11:49:44.348 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:49:44.779 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 11:49:45.037 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":8}
+2025-12-22 11:49:51.440 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI17TPRRUEL:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17TPRRUEL","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 11:49:51.550 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"35d091ed-ac2b-4be2-8136-a8a5e88ef876","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI17TPRRUEL:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17TPRRUEL","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 11:49:52.523 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI17TPRRUEL:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI17TPRRUEL","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+System.InvalidOperationException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 26
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 22
+2025-12-22 11:54:45.077 +02:00 [INF] Usage Telemetry: {"id":"52700000-1032-5e16-8943-08de413f6fc6","created":"2025-12-22T11:49:44.7217506\u002B02:00","host":{"framework_version":"8.0.22","mass_transit_version":"8.5.7.0","operating_system_version":"Unix 6.17.0.8","time_zone_info":"(UTC\u002B02:00) Eastern European Time (Athens)","commit_hash":"855cf1752c94ca9498e0c45ce8d09fdc9e957dd6"},"bus":[{"created":"2025-12-22T11:49:44.7230787\u002B02:00","configured":"2025-12-22T11:49:44.8595922\u002B02:00","started":"2025-12-22T11:49:45.0364137\u002B02:00","name":"IBus","endpoints":[{"name":"PlayerCreated","type":"RabbitMQ","prefetch_count":24,"consumer_count":1,"message_count":1},{"name":"_bus_","type":"RabbitMQ","prefetch_count":24}]}]} {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":29}
+2025-12-22 12:08:28.168 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":48}
+2025-12-22 12:13:20.125 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:13:20.539 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:13:20.826 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 12:13:24.374 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI18AUUKQ0V:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18AUUKQ0V","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 12:13:24.489 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"b9944f77-f356-48f9-bfeb-4e43b7847ca4","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI18AUUKQ0V:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18AUUKQ0V","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+2025-12-22 12:13:25.414 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI18AUUKQ0V:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18AUUKQ0V","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+BasketballAnalytics.Application.Exceptions.UserAlreadyExistsException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 25
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 24
+2025-12-22 12:18:20.862 +02:00 [INF] Usage Telemetry: {"id":"fbd70000-1032-5e16-6ea2-08de4142bba2","created":"2025-12-22T12:13:20.4821667\u002B02:00","host":{"framework_version":"8.0.22","mass_transit_version":"8.5.7.0","operating_system_version":"Unix 6.17.0.8","time_zone_info":"(UTC\u002B02:00) Eastern European Time (Athens)","commit_hash":"855cf1752c94ca9498e0c45ce8d09fdc9e957dd6"},"bus":[{"created":"2025-12-22T12:13:20.4836377\u002B02:00","configured":"2025-12-22T12:13:20.6449526\u002B02:00","started":"2025-12-22T12:13:20.8249469\u002B02:00","name":"IBus","endpoints":[{"name":"PlayerCreated","type":"RabbitMQ","prefetch_count":24,"consumer_count":1,"message_count":1},{"name":"_bus_","type":"RabbitMQ","prefetch_count":24}]}]} {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":29}
+2025-12-22 12:25:28.482 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":42}
+2025-12-22 12:26:59.919 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:27:00.335 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:27:00.588 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:27:06.720 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI18IK158MC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18IK158MC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:27:06.834 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"9325ff07-a56f-48fb-9680-923c0a68ad3f","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI18IK158MC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18IK158MC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:27:07.787 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI18IK158MC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18IK158MC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":6}
+BasketballAnalytics.Application.Exceptions.UserAlreadyExistsException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 25
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 24
+2025-12-22 12:27:46.288 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":24}
+2025-12-22 12:28:00.737 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:28:01.150 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:28:01.386 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":16}
+2025-12-22 12:28:15.158 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI18J8DPNVC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18J8DPNVC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 12:28:15.270 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"78004be1-e372-4ecf-99a4-b86ddb6fb462","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI18J8DPNVC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18J8DPNVC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":9}
+2025-12-22 12:28:16.191 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI18J8DPNVC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18J8DPNVC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":8}
+BasketballAnalytics.Application.Exceptions.UserAlreadyExistsException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 25
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 24
+2025-12-22 12:29:03.499 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":26}
+2025-12-22 12:30:52.800 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:30:53.226 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:30:53.478 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":19}
+2025-12-22 12:30:57.743 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI18KOSACAC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18KOSACAC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:30:57.865 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"3ddf3f66-7e7e-4083-9a2b-afe5582b791a","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI18KOSACAC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18KOSACAC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:30:58.811 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI18KOSACAC:00000001","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18KOSACAC","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+BasketballAnalytics.Application.Exceptions.UserAlreadyExistsException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 25
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 24
+2025-12-22 12:33:18.959 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":25}
+2025-12-22 12:33:21.683 +02:00 [INF] Starting Basketball Analytics API {"EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:33:22.092 +02:00 [INF] Configured endpoint PlayerCreated, Consumer: BasketballAnalytics.Api.Consumers.PlayerCreatedConsumer {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":1}
+2025-12-22 12:33:22.341 +02:00 [INF] Bus started: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":20}
+2025-12-22 12:33:47.300 +02:00 [WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNI18M57H3CH:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18M57H3CH","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 12:33:47.380 +02:00 [INF] Handling request RegisterUserCommand ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"1637871b-9a4e-4fb0-a306-faeb14d78c85","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Register (BasketballAnalytics.Api)","RequestId":"0HNI18M57H3CH:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18M57H3CH","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":15}
+2025-12-22 12:33:48.302 +02:00 [ERR] An unhandled exception has occured {"SourceContext":"BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware","RequestId":"0HNI18M57H3CH:00000003","RequestPath":"/api/Auth/register","ConnectionId":"0HNI18M57H3CH","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":13}
+BasketballAnalytics.Application.Exceptions.UserAlreadyExistsException: Username 'alex' already exists
+   at BasketballAnalytics.Application.Features.Authentication.Commands.Register.RegisterUserCommandHandler.Handle(RegisterUserCommand request, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Features/Auth/Commands/Register/RegisterUserCommandHandler.cs:line 25
+   at BasketballAnalytics.Application.Common.Behavior.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/ValidationBehavior.cs:line 37
+   at BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /home/alex/Documents/BasketballAnalytics-API/src/Core/BasketballAnalytics.Application/Common/Behaviors/LoggingBehavior.cs:line 27
+   at BasketballAnalytics.Api.Controllers.AuthController.Register(RegisterUserCommand command) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at BasketballAnalytics.Api.Middleware.GlobalErrorHandlingMiddleware.Invoke(HttpContext context) in /home/alex/Documents/BasketballAnalytics-API/src/Presentation/BasketballAnalytics.Api/Middleware/GlobalErrorHandlingMiddleware.cs:line 24
+2025-12-22 12:35:43.289 +02:00 [INF] Handling request LoginQuery ... {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"4ac7a1e9-e4c1-44e7-96d9-a7e81086ae3a","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI18M57H3CH:00000004","RequestPath":"/api/Auth/login","ConnectionId":"0HNI18M57H3CH","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":17}
+2025-12-22 12:35:43.775 +02:00 [INF] Handled request LoginQuery in 485ms {"SourceContext":"BasketballAnalytics.Application.Common.Behaviors.LoggingBehavior","ActionId":"4ac7a1e9-e4c1-44e7-96d9-a7e81086ae3a","ActionName":"BasketballAnalytics.Api.Controllers.AuthController.Login (BasketballAnalytics.Api)","RequestId":"0HNI18M57H3CH:00000004","RequestPath":"/api/Auth/login","ConnectionId":"0HNI18M57H3CH","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":3}
+2025-12-22 12:36:50.883 +02:00 [INF] Bus stopped: "rabbitmq://localhost/" {"SourceContext":"MassTransit","EnvironmentName":"Development","MachineName":"alex-HP-255-15-6-inch-G9-Notebook-PC","ThreadId":17}

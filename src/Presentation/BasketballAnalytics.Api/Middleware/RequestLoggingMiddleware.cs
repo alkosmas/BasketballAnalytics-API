@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
+
 
 namespace BasketballAnalytics.Api.Middleware
 {
@@ -63,5 +65,4 @@ namespace BasketballAnalytics.Api.Middleware
         }
     }
 }
-
-app.UseMiddleware<RequestLoggingMiddleware>();
+}

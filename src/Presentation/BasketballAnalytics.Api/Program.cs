@@ -1,5 +1,6 @@
 using BasketballAnalytics.Api.Consumers;
 using BasketballAnalytics.Api.Middleware;
+using BasketballAnalytics.Api.Swagger;
 using BasketballAnalytics.Application.Common.Behavior;
 using BasketballAnalytics.Application.Common.Behaviors;
 using BasketballAnalytics.Application.Common.Interfaces;
@@ -135,6 +136,9 @@ try
                 new string[] {}
             }
         });
+
+        options.OperationFilter<CommonResponsesOperationFilter>();
+
     });
 
     // Validators + MemoryCache

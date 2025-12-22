@@ -11,6 +11,7 @@ namespace BasketballAnalytics.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class AuthController : ControllerBase
     {
         private readonly ISender _mediator;
