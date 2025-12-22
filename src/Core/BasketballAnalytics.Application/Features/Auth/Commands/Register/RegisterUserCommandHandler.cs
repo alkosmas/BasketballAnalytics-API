@@ -4,6 +4,9 @@ using BasketballAnalytics.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 using BasketballAnalytics.Application.Features.Teams.Commands;
+using Microsoft.EntityFrameworkCore;
+using BasketballAnalytics.Application.Exceptions;
+
 
 namespace BasketballAnalytics.Application.Features.Authentication.Commands.Register;
 
@@ -16,7 +19,11 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, G
         _context = context;
     }
     public async Task<Guid> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
-    {
+    { 
+         if (await _context.Users.AnyAsync(u => u.Username == request.Username))
+        {
+            throw new UserAlreadyExistsException(request.Username);
+        }
         var user = new User
         {
             Id = Guid.NewGuid(),

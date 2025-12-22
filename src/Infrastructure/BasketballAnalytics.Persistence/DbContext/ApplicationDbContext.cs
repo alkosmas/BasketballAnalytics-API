@@ -26,9 +26,17 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext, IAp
             .WithMany(t => t.Players)
             .HasForeignKey(p => p.TeamId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
         // Global Query Filter for Soft Delete
-        modelBuilder.Entity<Player>().HasQueryFilter(e => !e.IsDeleted);
-        modelBuilder.Entity<Team>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Player>()
+                .HasQueryFilter(e => !e.IsDeleted);
+
+        modelBuilder.Entity<Team>()
+                    .HasQueryFilter(e => !e.IsDeleted);
+        
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
